@@ -1,0 +1,140 @@
+/*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
+
+:root {
+	/* Colors */
+	--color-primary: #d73953;
+	--color-black: #090909;
+	--color-white: #ffffff;
+	--color-light-grey: #f3f3f3;
+	--color-dark-grey: #353535;
+	--text-color: var(--color-black);
+	
+	/* Fonts */
+	--font-family-base: Open Sans, Helvetica Neue, Helvetica, Arial, sans-serif;
+	--font-family-title: Raleway, Helvetica Neue, Helvetica, Arial, sans-serif;
+	
+	/* Font size */
+	--font-size-small: 1.2rem;
+	--font-size-medium: 1.6rem;
+	--font-size-large: 1.8rem;
+	--font-size-x-large: 2.3rem;
+	--font-size-xx-large: 4.8rem;
+	
+	/* Font weight */
+	--font-weight-regular: 400;
+	--font-weight-bold: 700;
+	
+	/* Line height */
+	--line-height-small: 1.2;
+	--line-height-base: 1.5;
+	--line-height-big: 1.8;
+	
+	/* Sections */
+	--section-header-align: center;
+	--section-tagline-transform: uppercase;
+	--section-title-margin: 0;
+	--section-title-color: var(--color-black);
+    }
+    
+    /**
+     * Correct the line height in all browsers.
+     * Prevent adjustments of font size after orientation changes in iOS.
+     */
+    html {
+	scroll-behavior: smooth;
+	font-size: 62.5%;
+    }
+    
+    /* Sections
+       ========================================================================== */
+    
+    /**
+     * Remove the margin in all browsers.
+     */
+    body {
+	color: #161616;
+	font-family: var(--font-family-base);
+	font-size: var(--font-size-medium);
+	font-weight: var(--font-weight-regular);
+	line-height: var(--line-height-base);
+    }
+    
+    /**
+     * Correct the font size and weight on `h1 to h6`
+     */
+    h1, h2, h3, h4, h5, h6 {
+	font-family: var(--font-family-title);
+	font-weight: var(--font-weight-bold);
+    }
+    
+    /**
+     * Set link color and remove text decoration.
+     */
+    a:link {
+	color: var(--text-color);
+	text-decoration: none;
+    }
+	
+    /**
+     * Set visited link style to italic.
+     */
+    a:visited {
+	font-style: italic;
+    }
+	
+    /**
+     * Add underline on link hover.
+     */
+    a:hover {
+	text-decoration: underline;
+    }
+	
+    /**
+     * Set background color on active link.
+     */
+    a:active {
+	background-color: var(--color-light-grey);
+    }
+    
+    /**
+     * Hide visually hidden elements.
+     */
+    .visually-hidden {
+	display: none;
+    }
+    
+    /**
+     * Set color for card category.
+     */
+    .card-category {
+	color: var(--color-primary);
+    }
+    
+    /**
+     * Set color, font family, text transform, and font weight for section tagline.
+     */
+    .section-tagline {
+	color: var(--color-primary);
+	font-family: var(--font-family-title);
+	text-transform: var(--section-tagline-transform);
+	font-weight: var(--font-weight-bold);
+    }
+    
+    /**
+     * Set text alignment for section header.
+     */
+    .section-header {
+	text-align: var(--section-header-align);
+    }
+    
+    /**
+     * Set font family, font size, font weight, margin, and color for section title.
+     */
+    .section-title {
+	font-family: var(--font-family-title);
+	font-size: var(--font-size-xx-large);
+	font-weight: var(--font-weight-bold);
+	margin: var(--section-title-margin);
+	color: var(--section-title-color);
+    }
+    

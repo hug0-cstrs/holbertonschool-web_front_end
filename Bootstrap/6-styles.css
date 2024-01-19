@@ -1,0 +1,75 @@
+/* links refined
+   ============================================= */
+
+a.text-dark:focus,
+a.text-dark:hover {
+  color: #e0003c !important;
+  text-decoration: none;
+}
+
+/* border refined
+   ============================================= */
+
+.border-bottom {
+  border-bottom: 1px solid #e0003c !important;
+}
+
+/* buttons refined
+   ============================================= */
+/* btn-primary
+   ============================================= */
+
+.btn-primary {
+  border-color: #e0003c;
+  background-color: #e0003c;
+  color: #ffffff;
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active {
+  background-color: #bc1340 !important;
+  border-color: #bc1340 !important;
+  color: #ffffff !important;
+}
+
+/* btn-outline-primary
+   ============================================= */
+
+.btn-outline-primary {
+  border-color: #e0003c;
+  color: #e0003c;
+}
+
+.btn-outline-primary:hover,
+.btn-outline-primary:focus,
+.btn-outline-primary:active {
+  border-color: #e0003c !important;
+  background-color: #e0003c !important;
+  color: #ffffff;
+}
+
+/* cards refined
+   ============================================= */
+
+.card {
+  border: 1px solid #e0003c;
+  border-radius: 1rem;
+}
+
+.card-header {
+  background-color: #e0003c;
+  border-color: #e0003c;
+  color: #ffffff;
+}
+
+.card-header:first-child {
+  border-radius: calc(1rem - 1px) calc(1rem - 1px) 0 0;
+}
+
+/* text-muted refined
+   ============================================= */
+
+.text-muted {
+  color: #8c8c8c !important;
+}

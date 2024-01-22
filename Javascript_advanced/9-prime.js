@@ -1,6 +1,7 @@
 // Prime numbers & timing execution
 
 function countPrimeNumbers() {
+  // function to count prime numbers from 2 to 100
   let count = 0;
   let prime;
 
@@ -31,6 +32,7 @@ const t0 = performance.now();
 countPrimeNumbers();
 
 const t1 = performance.now();
+
 console.log(
   `Execution time of printing countPrimeNumbers was ${t1 - t0} milliseconds.`
 );

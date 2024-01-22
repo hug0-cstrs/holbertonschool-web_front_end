@@ -1,39 +1,36 @@
 // Prime numbers & timing execution
 
 function countPrimeNumbers() {
-  let numOfPrimeNums = 0;
+  let count = 0;
+  let prime;
 
-  function isPrime(number) {
-    let status = 1;
-    if (number < 2) {
-      status = 0;
-    } else {
-      for (let i = 2; i < number; i++) {
-        if (number % i === 0) {
-          status = 0;
-        }
+  for (let i = 2; i <= 100; i++) {
+    prime = true;
+
+    for (let j = 2; j < i; j++) {
+      if (i % j === 0) {
+        prime = false;
+        break;
       }
     }
-    return status;
-  }
 
-  for (let num = 2; num < 101; num++) {
-    if (isPrime(num) === 1) {
-      numOfPrimeNums += 1;
+    if (prime) {
+      count += 1;
     }
   }
 
-  return numOfPrimeNums;
+  return count;
 }
+
 console.log(
   "The number of prime numbers from 2 to 100 is : ",
   countPrimeNumbers()
 );
 
-const a = performance.now();
+const t0 = performance.now();
 countPrimeNumbers();
 
-const b = performance.now();
+const t1 = performance.now();
 console.log(
-  `Execution time of printing countPrimeNumbers was ${b - a} milliseconds.`
+  `Execution time of printing countPrimeNumbers was ${t1 - t0} milliseconds.`
 );

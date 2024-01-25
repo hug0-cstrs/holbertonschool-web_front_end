@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Task 5</title>
+
+    <!-- Load jQuery Slim & minified version from their CDN -->
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.slim.min.js"
+      integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8="
+      crossorigin="anonymous"
+    ></script>
+
+    <script type="application/javascript">
+      $(document).ready(() => {
+        function createFamilyTree() {
+          $("body").append(
+            $("<table></table>").append(
+              $("<thead></thead>").append(
+                $("<th></th>").text("Firstname"),
+                $("<th></th>").text("Lastname")
+              ),
+              $("<tbody></tbody>")
+            )
+          );
+        }
+
+        function addNewMember(firstName, lastName) {
+          $("tbody").append(
+            $("<tr></tr>").append(
+              $("<td></td>").text(firstName),
+              $("<td></td>").text(lastName),
+              $('<td style="background-color: orange; cursor: pointer;"></td>')
+                .text("(X)")
+                .click((e) => {
+                  $(e)[0].target.closest("tr").remove();
+                  console.log($(e));
+                })
+            )
+          );
+        }
+
+// [0] = extracts the first element of this jQuery object, giving access to the native DOM element.
+
+// target = property of the Event interface is a reference to the object that dispatched the event.
+
+//closest() = method traverses the Element and its parents (heading toward the document root) until it finds a node that matches the provided selector string. Will return itself or the matching ancestor. If no such element exists, it returns null.
+
+// remove() = method removes the set of matched elements from the DOM.
+
+        createFamilyTree();
+        addNewMember("Guillaume", "Salva");
+        addNewMember("Arielle", "Snizt");
+        addNewMember("Fanette", "Snizt");
+        addNewMember("Gerard", "Snizt");
+        addNewMember("Juan", "Snizt");
+        addNewMember("Victor", "Salva");
+      });
+
+    </script>
+  </head>
+  <body></body>
+</html>

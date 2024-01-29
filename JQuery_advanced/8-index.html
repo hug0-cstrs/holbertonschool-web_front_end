@@ -73,6 +73,8 @@
                   cursor: "pointer",
                   "margin-left": "10px",
                   display: "inline",
+                  fontWeight:
+                    pageIndex === currentOffset + 1 ? "bold" : "normal", // Bold when it is the current page
                 })
                 .click(() => {
                   queryWikipedia($("input").val(), pageIndex - 1); // Call queryWikipedia function with updated offset on pagination click

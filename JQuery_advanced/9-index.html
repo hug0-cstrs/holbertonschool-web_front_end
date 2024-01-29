@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <title>Task 9</title>
+    <style>
+      /* Styles for the loading state*/
+      .loading {
+        opacity: 0.2;
+      }
+    </style>
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.js"
+      integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+      crossorigin="anonymous"
+    ></script>
+    <script type="application/javascript">
+      $(document).ready(() => {
+        // Function to create the search form dynamically
+        function createSearchForm() {
+          $("body").append(
+            $('<input type="text">'),
+            $('<input type="submit">').click(() => {
+              queryWikipedia($("input:nth-of-type(1)").val());
+            }),
+            $("<ul></ul>"), // List to display the results
+            $('<ul id="pagination"></ul>') // Pagination
+          );
+        }
+
+        // Function to add a new article to the list
+        function addNewArticle(id, title, snippet) {
+          $li = $(`
+                    <li>
+                        <p><span>${id} - <b>${title}</b></span></p>
+                        <p>${snippet}</p>
+                    </li>
+                    `);
+
+          $("ul").append($li);
+        }
+
+        // Function to query Wikipedia API and display search results
+        function queryWikipedia(search, offset = 0) {
+          displayLoading(true); // Display loading state
+          $.ajax({
+            url: "https://en.wikipedia.org/w/api.php?origin=*",
+            data: {
+              action: "query",
+              format: "json",
+              list: "search",
+              srsearch: search,
+              sroffset: offset * 10, // 10 is the number of items per page
+              srlimit: (itemsPerPage = 10),
+            },
+            success: (response) => {
+              displayLoading(false); // Remove loading state
+              for (let data of response.query.search) {
+                // Add new articles to the list
+                addNewArticle(data.pageid, data.title, data.snippet);
+              }
+              buildPagination(
+                // Build pagination
+                response.query.searchinfo.totalhits,
+                itemsPerPage,
+                offset
+              );
+            },
+          });
+        }
+
+        // Function to build pagination based on the number of items
+        function buildPagination(numberOfItems, itemsPerPage, currentOffset) {
+          $("#pagination").empty();
+
+          let limit = Math.floor(numberOfItems / itemsPerPage); // Calculate the number of pages
+          for (let pageIndex = 1; pageIndex <= limit; pageIndex++) {
+            // loop to create the pagination
+            $("#pagination").append(
+              $(`<li>${pageIndex}</li>`)
+                .css({
+                  // Styles for the pagination
+                  cursor: "pointer",
+                  "margin-left": "10px",
+                  display: "inline",
+                })
+                .click(() => {
+                  queryWikipedia($("input").val(), pageIndex - 1); // Query Wikipedia API with the new offset
+                })
+            );
+          }
+        }
+
+        // Function to display loading state
+        function displayLoading(loading) {
+          if (loading) {
+            $("ul").first().wrap('<div class="loading"></div>'); // Wrap the list with a div with the loading class
+          } else {
+            $("ul").first().unwrap(); // Remove the div with the loading class
+          }
+        }
+        createSearchForm();
+      });
+    </script>
+  </head>
+
+  <body></body>
+</html>

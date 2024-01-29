@@ -10,6 +10,7 @@
     ></script>
     <script type="application/javascript">
       $(document).ready(() => {
+        // Function to create the family tree table
         function createFamilyTree() {
           $("body").append(
             $("<table></table>").append(
@@ -22,6 +23,7 @@
           );
         }
 
+        // Function to add a new member to the family tree
         function addNewMember(firstName, lastName, position) {
           if (position == "before") {
             $("tbody").prepend(
@@ -54,6 +56,7 @@
           }
         }
 
+        // Function to create the form for adding new members
         function createForm() {
           $("table").before(
             '<input type="text">',
@@ -69,6 +72,7 @@
           );
         }
 
+        // Call the functions to create the family tree and the form
         createFamilyTree();
         createForm();
       });

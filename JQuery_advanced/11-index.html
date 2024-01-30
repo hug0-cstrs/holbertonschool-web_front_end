@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <title>Task 11</title>
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.js"
+      integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+      crossorigin="anonymous"
+    ></script>
+    <script type="application/javascript">
+      $(document).ready(() => {
+        // Function to add a new post row to the body of the HTML document
+        function addPostRow(data) {
+          $("body").append(
+            `
+          <p>
+            Post created with id ${data.id}, title: ${data.title}, author: ${data.author}
+          </p>
+          `
+          );
+        }
+
+        // Function to list all the posts by making a GET request to the server
+        function listPosts() {
+          $.get("http://localhost:3000/posts", (posts, status, info) => {
+            if (info.status == 200) {
+              for (post of posts) {
+                addPostRow(post);
+              }
+            }
+          }).fail(() => {
+            alert("Server Error");
+          });
+        }
+
+        // Function to build and append a form to the body of the HTML document
+        function buildFrom() {
+          $("body").append(
+            `<form>
+            <div>
+              <label for="author">Author</label>
+              <input type="text" id="author">
+            </div>
+            <div>
+              <label for="title">Title</label>
+              <textarea id="title"></textarea>
+            </div>
+            <input type="submit">
+          </form>`
+          );
+
+          // Event listener for form submission
+          $("form").submit(() => {
+            sendForm();
+          });
+        }
+
+        // Function to send the form data as a POST request to the server
+        function sendForm() {
+          const $msg = $("<p>About to send the query to the API</p>");
+          $("form").after($msg);
+          author = $("#author").val();
+          title = $("#title").val();
+
+          $.ajax({
+            url: "http://localhost:3000/posts",
+            type: "POST",
+            headers: { "Content-Type": "application/json" },
+            data: JSON.stringify({
+              author,
+              title,
+            }),
+            success: (response) => {
+              addPostRow(response);
+              $("#author").val("");
+              $("#title").val("");
+              $msg.remove();
+            },
+            error: () => {
+              alert("Error sending the POST query");
+            },
+          });
+        }
+
+        // Call the necessary functions to list posts and build the form
+        listPosts();
+        buildFrom();
+      });
+    </script>
+  </head>
+
+  <body></body>
+</html>
